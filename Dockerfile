@@ -20,15 +20,12 @@ RUN apk add --no-cache \
 
 RUN apk add --no-cache libssh-dev
 
-RUN mkdir -p /src/tmate-ssh-server
-COPY . /src/tmate-ssh-server
+RUN mkdir -p /src/ztmate-ssh-server
+COPY . /src/ztmate-ssh-server
 
 RUN set -ex; \
-	cd /src/tmate-ssh-server; \
-	./autogen.sh; \
-	./configure --prefix=/usr CFLAGS="-D_GNU_SOURCE"; \
-	make -j "$(nproc)"; \
-	make install
+	cd /src/ztmate-ssh-server; \
+	zig build -Doptimize=ReleaseSafe --prefix /usr
 
 ### Minimal run-time image
 FROM alpine:3.16
@@ -44,7 +41,7 @@ RUN apk add --no-cache \
 	openssl \
 	zlib
 
-COPY --from=build /usr/bin/tmate-ssh-server /usr/bin/
+COPY --from=build /usr/bin/ztmate-ssh-server /usr/bin/
 
 # TODO not run as root. Instead, use capabilities.
 

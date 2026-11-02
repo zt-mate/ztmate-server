@@ -1,0 +1,49 @@
+pub const TMATE_PROTOCOL_VERSION: i64 = 6;
+pub const VERSION: [:0]const u8 = "2.3.0";
+
+pub const TmateControlOutMsgTypes = enum(c_int) {
+    TMATE_CTL_HEADER = 0,
+    TMATE_CTL_DEAMON_OUT_MSG = 1,
+    TMATE_CTL_SNAPSHOT = 2,
+    TMATE_CTL_CLIENT_JOIN = 3,
+    TMATE_CTL_CLIENT_LEFT = 4,
+    TMATE_CTL_EXEC = 5,
+    TMATE_CTL_LATENCY = 6,
+};
+
+pub const TmateControlInMsgTypes = enum(c_int) {
+    TMATE_CTL_DEAMON_FWD_MSG = 0,
+    TMATE_CTL_REQUEST_SNAPSHOT = 1,
+    TMATE_CTL_PANE_KEYS = 2,
+    TMATE_CTL_RESIZE = 3,
+    TMATE_CTL_EXEC_RESPONSE = 4,
+    TMATE_CTL_RENAME_SESSION = 5,
+};
+
+pub const TmateDaemonOutMsgTypes = enum(c_int) {
+    TMATE_OUT_HEADER = 0,
+    TMATE_OUT_SYNC_LAYOUT = 1,
+    TMATE_OUT_PTY_DATA = 2,
+    TMATE_OUT_EXEC_CMD_STR = 3,
+    TMATE_OUT_FAILED_CMD = 4,
+    TMATE_OUT_STATUS = 5,
+    TMATE_OUT_SYNC_COPY_MODE = 6,
+    TMATE_OUT_WRITE_COPY_MODE = 7,
+    TMATE_OUT_FIN = 8,
+    TMATE_OUT_READY = 9,
+    TMATE_OUT_RECONNECT = 10,
+    TMATE_OUT_SNAPSHOT = 11,
+    TMATE_OUT_EXEC_CMD = 12,
+    TMATE_OUT_UNAME = 13,
+};
+
+pub const TmateDaemonInMsgTypes = enum(c_int) {
+    TMATE_IN_NOTIFY = 0,
+    TMATE_IN_LEGACY_PANE_KEY = 1,
+    TMATE_IN_RESIZE = 2,
+    TMATE_IN_EXEC_CMD_STR = 3,
+    TMATE_IN_SET_ENV = 4,
+    TMATE_IN_READY = 5,
+    TMATE_IN_PANE_KEY = 6,
+    TMATE_IN_EXEC_CMD = 7,
+};

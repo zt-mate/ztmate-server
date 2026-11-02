@@ -27,6 +27,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
+#include <assert.h>
 
 #include "tmux.h"
 #include "tmate.h"

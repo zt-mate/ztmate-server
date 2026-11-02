@@ -18,7 +18,10 @@ Makefile.in
 configure
 keys/
 tmate-ssh-server
+ztmate-ssh-server
 cscope.*
 tags
 tmux.1.*
 tmate.1.*
+.zig-cache/
+zig-out/
